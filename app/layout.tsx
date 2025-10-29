@@ -1,6 +1,26 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Bonheur_Royale, Poppins } from "next/font/google";
+
+import { Jura } from "next/font/google";
+
+const jura = Jura({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"], // normal, medium, semi-bold
+  variable: "--font-jura", // optional CSS variable
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // pick what you need
+  variable: "--font-poppins",
+});
+
+const bonheur = Bonheur_Royale({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,11 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${jura.variable} antialiased`}>{children}</body>
     </html>
   );
 }
