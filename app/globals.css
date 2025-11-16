@@ -17,27 +17,7 @@ html {
   scroll-behavior: smooth;
 }
 
-@font-face {
-  font-family: "Martyric";
-  src: url("/fonts/Martyric_PersonalUse.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 
-.font-martyric {
-  font-family: "Martyric", sans-serif;
-}
-
-@font-face {
-  font-family: "StreetBrush";
-  src: url("/fonts/StreetBrush.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-.font-street {
-  font-family: "StreetBrush", sans-serif;
-}
 
 :root {
   --background: #ffffff;

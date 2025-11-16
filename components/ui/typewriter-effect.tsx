@@ -42,7 +42,7 @@ export const TypewriterEffect = ({
         }
       );
     }
-  }, [isInView]);
+  }, [isInView, animate]);
 
   const renderWords = () => {
     return (
@@ -51,14 +51,14 @@ export const TypewriterEffect = ({
           return (
             <div
               key={`word-${idx}`}
-              className="inline-block font-martyric font-street"
+              className="inline-block"
             >
               {word.text.map((char, index) => (
                 <motion.span
                   initial={{}}
                   key={`char-${index}`}
                   className={cn(
-                    `dark:text-white text-black opacity-0 hidden font-street`,
+                    `dark:text-white text-black opacity-0 hidden`,
                     word.className
                   )}
                 >
@@ -74,7 +74,7 @@ export const TypewriterEffect = ({
   };
   return (
     <div
-      className={cn("text-3xl lg:text-6xl font-bold text-center", className)}
+      className={cn("text-xl lg:text-4xl font-bold text-center", className)}
     >
       {renderWords()}
       <motion.span

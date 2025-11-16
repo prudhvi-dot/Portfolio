@@ -7,7 +7,6 @@ import {
   useSpring,
   MotionValue,
 } from "motion/react";
-import { TextGenerateEffect } from "./text-generate-effect";
 
 export const HeroParallax = ({
   products,
@@ -27,7 +26,7 @@ export const HeroParallax = ({
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const springConfig = { stiffness: 300, damping: 40, bounce: 100 };
 
   const translateX = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 1000]),
@@ -50,7 +49,7 @@ export const HeroParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    useTransform(scrollYProgress, [0, 0.2], [-700, 350]),
     springConfig
   );
   return (
@@ -102,30 +101,18 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl flex relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <div>
-        <h1 className="text-7xl font-street md:text-9xl dark:text-white">
-          Hi, I'm Prudhvi
+    <div className="max-w-7xl flex relative mx-auto py-25 md:py-40 px-4 w-full  left-0 top-0">
+      <div className="md:px-7">
+        <h1 className="text-7xl md:text-9xl dark:text-white">
+          {"Hi, I'm Prudhvi"}
         </h1>
-        <p className="max-w-2xl font-bonheur font-thin text-base md:text-xl mt-8 dark:text-neutral-200">
+
+        <p className="max-w-2xl px-2 font-bonheur font-thin text-base md:text-xl mt-8 dark:text-neutral-200">
           I am a web developer driven by curiosity and design.
           <br />
           Transforming concepts into impactful digital solutions.
         </p>
-        {/* <TextGenerateEffect
-        words={`I am a web developer driven by curiosity and design. 
-          Transforming concepts into impactful digital solutions.
-          `}
-      /> */}
       </div>
-      {/* <div className="flex justify-center absolute bottom-16 right-40">
-        <img
-          // Increased max-height from 500px to 580px for a bigger presence
-          className=" max-h-[580px] object-contain"
-          src="/hero_final.png" // Assuming this is your updated file!
-          alt="Creative portrait for portfolio" // Added a descriptive alt tag for accessibility
-        />
-      </div> */}
     </div>
   );
 };
@@ -154,7 +141,10 @@ export const ProductCard = ({
         lg:w-[30rem] lg:h-96 /* keep original large screen size */
       "
     >
-      <a href={product.link} className="block group-hover/product:shadow-2xl">
+      <a
+        href={product.link}
+        className="block pointer-events-none group-hover/product:shadow-2xl"
+      >
         <img
           src={product.thumbnail}
           className="object-cover object-center absolute h-full w-full inset-0 rounded-xl"

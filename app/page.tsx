@@ -1,20 +1,19 @@
 import Approach from "@/components/Approach";
 import { PinContainer } from "@/components/ui/3d-pin";
 import { CardDemo } from "@/components/ui/Animatedcard";
-import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { Compare } from "@/components/ui/compare";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { TextRevealCard } from "@/components/ui/text-reveal-card";
 import { Timeline } from "@/components/ui/timeline";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
-import { Home, User, FolderKanban, Mail } from "lucide-react";
+import { Home, User, FolderKanban, IdCard } from "lucide-react";
+import Image from "next/image";
 
 import React from "react";
-import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin} from "react-icons/fa";
 import {
   SiMongodb,
   SiMysql,
@@ -26,15 +25,25 @@ import {
   SiJavascript,
   SiNodedotjs,
   SiTypescript,
-  SiAuth0,
   SiClerk,
   SiFirebase,
   SiGithub,
   SiVercel,
   SiRedux,
-  SiHtml5,
+  SiHuggingface,
+  SiLangchain
 } from "react-icons/si";
 
+const skills0 = [
+  { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
+  { name: "React", icon: <SiReact className="text-sky-400" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
+  { name: "TypeScript", icon: <SiTypescript className="text-blue-500" /> },
+  { name: "Prisma", icon: <SiPrisma className="text-blue-600" /> },
+  { name: "Huggingface", icon: <SiHuggingface className="text-yellow-400" /> },
+  { name: "Langchain", icon: <SiLangchain className="text-gray-300 w-7 h-7" /> },
+  { name: "Pinecone", icon: <Image src="/pinecone.png" width={20} height={20} alt="Pinecone" /> },
+];
 const skills = [
   { name: "React", icon: <SiReact className="text-sky-400" /> },
   { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
@@ -69,6 +78,49 @@ const skills3 = [
 ];
 
 const timelineData = [
+  {
+    title: "DocuSense",
+    content: (
+      <div>
+        <div>
+          <h3 className="text-lg font-semibold white">DocuSense</h3>
+          <p className="text-sm text-gray-300 mt-1">
+            DocuSense is an intelligent document-analysis platform that allows
+            users to upload files and instantly interact with their content. It
+            enables seamless Q&A by converting documents into vector embeddings,
+            retrieving relevant context, and generating accurate, AI-powered
+            responses. Users can organize documents, search information
+            effortlessly, and receive clear, grounded answers tailored to their
+            queries. DocuSense focuses on enhancing productivity, reducing
+            manual reading time, and offering a smooth, intuitive experience for
+            anyone working with large or complex documents.
+          </p>
+          <div className="flex flex-wrap gap-4 my-1">
+            {skills0.map((skill) => (
+              <HoverBorderGradient key={skill.name} duration={1.5} clockwise>
+                <div className="flex items-center gap-2">
+                  {skill.icon}
+                  <span>{skill.name}</span>
+                </div>
+              </HoverBorderGradient>
+            ))}
+          </div>
+        </div>
+        <PinContainer
+          title="DocuSense"
+          href="https://clas-sync-nwie.vercel.app/"
+        >
+          <div className="flex z-0 flex-col items-center text-center text-white bg-zinc-900/80 rounded-xl shadow-lg w-64 p-4">
+            <img
+              src="/docusense.png"
+              alt="DocuSense"
+              className="w-full h-32 object-contain rounded-md"
+            />
+          </div>
+        </PinContainer>
+      </div>
+    ),
+  },
   {
     title: "ClasSync",
     content: (
@@ -194,6 +246,11 @@ export const dockItems = [
     href: "#home",
   },
   {
+    title: "About",
+    icon: <IdCard className="w-5 h-5" />,
+    href: "#about",
+  },
+  {
     title: "Tech Stack",
     icon: (
       <svg
@@ -235,7 +292,7 @@ export const products = [
   },
   {
     title: "Next.js",
-    link: "https://gomoonbeam.com",
+    link: "",
     thumbnail: "/Next.png",
   },
   {
@@ -251,7 +308,8 @@ export const products = [
   {
     title: "NodeJS",
     link: "https://gomoonbeam.com",
-    thumbnail: "https://wallpaperaccess.com/full/3909225.jpg",
+    thumbnail:
+      "https://res.cloudinary.com/dxvqusbka/image/upload/v1758890394/Vercel_final_czq7k6.avif",
   },
   {
     title: "Node.js",
@@ -284,29 +342,32 @@ const page = () => {
       </div>
 
       {/* Hero section below */}
-      <HeroParallax products={products} />
-      {/* <TypewriterEffect
-        words={[
-          { text: "Who", className: "who" },
-          { text: "Am", className: "Am" },
-          { text: "I", className: "I" },
-        ]}
-      />
 
-      <div className="w-full  p-10 h-screen">
-        <div className="border border-zinc-500 rounded-2xl flex max-sm:flex-col gap-0 p-4">
-          <div>
-            <TextGenerateEffect
-              words={
-                "I’m Prudhvi Kunche, a Full-Stack Developer specializing in MERN & Next.js, passionate about building sleek, scalable, and user-friendly applications; I write clean code, optimize for performance, focus on user experience, and enjoy turning ideas into real-world projects."
-              }
-            />
-          </div>
-          <div>
-            <Compare />
+      <HeroParallax products={products} />
+      <div id="about" className="md:mt-11 md:pt-34">
+        <TypewriterEffect
+          words={[
+            { text: "Who", className: "who" },
+            { text: "Am", className: "Am" },
+            { text: "I", className: "I" },
+          ]}
+        />
+
+        <div className="w-full md:p-10 h-screen">
+          <div className="border border-zinc-500 rounded-2xl flex max-sm:flex-col gap-3 md:gap-0 p-4">
+            <div>
+              <TextGenerateEffect
+                words={
+                  "I’m Prudhvi Kunche, a Full-Stack Developer specializing in MERN & Next.js, passionate about building sleek, scalable, and user-friendly applications; I write clean code, optimize for performance, focus on user experience, and enjoy turning ideas into real-world projects."
+                }
+              />
+            </div>
+            <div>
+              <Compare />
+            </div>
           </div>
         </div>
-      </div> */}
+      </div>
       <div id="techstack" className="md:mt-11 md:pt-34">
         <TypewriterEffect
           words={[
@@ -314,8 +375,9 @@ const page = () => {
             { text: "Stack", className: "stack" },
           ]}
         />
-        <div className="grid max-sm:grid-cols-1 md:grid-cols-2 gap-4 my-3 px-1">
+        <div className="grid max-sm:grid-cols-1 md:grid-cols-2 gap-4 mt-8 px-1">
           <CardDemo
+          key={1}
             title="Frameworks & Libraries"
             description="Technologies I work with"
             icons={[
@@ -344,10 +406,12 @@ const page = () => {
           />
 
           <CardDemo
+          key={2}
             title="Databases"
             description="Databases I work with"
             icons={[
               <img
+              key={1}
                 src="/mongoose.svg"
                 alt="Mongoose"
                 className="w-[80%] h-[80%]"
@@ -370,6 +434,7 @@ const page = () => {
           />
 
           <CardDemo
+          key={3}
             title="Authentication & Deployment"
             description="Tools for auth and deployment"
             icons={[
@@ -382,6 +447,7 @@ const page = () => {
                 className="text-purple-500 w-[80%] h-[80%]"
               />,
               <img
+              key={2}
                 src="/AuthJS.png"
                 alt="Mongoose"
                 className="w-[80%] h-[80%]"
@@ -392,6 +458,7 @@ const page = () => {
             tech={["Firebase", "Clerk", "Auth.js", "GitHub", "Vercel"]}
           />
           <CardDemo
+          key={4}
             title="State Management"
             description="State libraries I use"
             icons={[
@@ -400,11 +467,13 @@ const page = () => {
                 className="text-purple-700 w-[80%] h-[80%]"
               />,
               <img
+              key={3}
                 src="/Tanstack.png"
                 alt="Mongoose"
                 className="w-[80%] h-[80%]"
               />,
               <img
+              key={4}
                 src="/zustand.ico"
                 alt="Mongoose"
                 className="w-[80%] h-[80%]"
@@ -420,7 +489,7 @@ const page = () => {
         />
         <Timeline data={timelineData} />
       </div>
-      <div className="mt-11 md:pt-34">
+      <div className="hidden md:block mt-11 md:pt-34">
         <TypewriterEffect
           words={[
             { text: "My", className: "my" },

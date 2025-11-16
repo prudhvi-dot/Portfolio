@@ -4,14 +4,13 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "./ui/canvas-reveal-effect";
 
-// import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 
 const Approach = () => {
   return (
-    <section className="w-full py-20">
-      {/* remove bg-white dark:bg-black */}
+    <section className="w-full py-5">
+
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
-        {/* add des prop */}
+
         <Card
           title="Planning & Strategy"
           icon={<AceternityIcon order="Phase 1" />}
@@ -21,8 +20,8 @@ const Approach = () => {
             animationSpeed={5.1}
             containerClassName="bg-zinc-900 rounded-3xl overflow-hidden"
             colors={[
-              [200, 200, 200], // subtle light grey
-              [150, 150, 150], // medium grey
+              [200, 200, 200],
+              [150, 150, 150],
             ]}
             dotSize={2}
           />
@@ -70,7 +69,6 @@ const Card = ({
   title,
   icon,
   children,
-  // add this one for the desc
   des,
 }: {
   title: string;
@@ -84,7 +82,7 @@ const Card = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="border border-black/[0.2] group/canvas-card flex items-center justify-center
-    dark:border-white/[0.2] max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] rounded-3xl 
+    dark:border-white/[0.2] max-w-sm w-full mx-auto p-4 relative lg:h-[25rem] rounded-3xl 
     bg-gray-200 dark:bg-zinc-900" // <-- added bg-gray-200 for light mode, dark:bg-gray-800 for dark mode
     >
       {/* change to h-10 w-10 , add opacity-30  */}
