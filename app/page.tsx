@@ -344,7 +344,7 @@ const page = () => {
       {/* Hero section below */}
 
       <HeroParallax products={products} />
-      <div id="about" className="md:mt-11 md:pt-34">
+      <div id="about" className="md:mt-11 md:pt-30">
         <TypewriterEffect
           words={[
             { text: "Who", className: "who" },
